@@ -24,6 +24,7 @@ namespace Notepad
             base.OnCreate(savedInstanceState);
 
             // Create your application here
+            SupportActionBar.Hide();
         }
         protected override void OnResume()
         {
