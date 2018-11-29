@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace Notepad
 {
-    [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
+    [Activity(Label = "@string/app_name", Theme = "@style/AppTheme")]
     public class MainActivity : AppCompatActivity
     {
         DatabaseService databaseService;
