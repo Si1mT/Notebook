@@ -39,9 +39,9 @@ namespace Notepad
             listView.Adapter = new NoteAdapter(this, notes, databaseService);
         }
 
-        protected override void OnRestart()
+        protected override void OnStart()
         {
-            base.OnRestart();
+            base.OnStart();
 
             List<Note> notes = databaseService.GetAllNotes();
 
