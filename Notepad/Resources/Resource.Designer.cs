@@ -2435,9 +2435,6 @@ namespace Notepad
 			// aapt resource value: 0x7f080063
 			public const int buttonPanel = 2131230819;
 			
-			// aapt resource value: 0x7f080099
-			public const int button_addNote = 2131230873;
-			
 			// aapt resource value: 0x7f08009c
 			public const int button_delete = 2131230876;
 			
@@ -2828,6 +2825,9 @@ namespace Notepad
 			// aapt resource value: 0x7f08006f
 			public const int title_template = 2131230831;
 			
+			// aapt resource value: 0x7f080099
+			public const int toolbar1 = 2131230873;
+			
 			// aapt resource value: 0x7f08003e
 			public const int top = 2131230782;
 			
@@ -3113,7 +3113,10 @@ namespace Notepad
 			public const int support_simple_spinner_dropdown_item = 2130968636;
 			
 			// aapt resource value: 0x7f04003d
-			public const int tooltip = 2130968637;
+			public const int toolbar = 2130968637;
+			
+			// aapt resource value: 0x7f04003e
+			public const int tooltip = 2130968638;
 			
 			static Layout()
 			{
@@ -3125,17 +3128,39 @@ namespace Notepad
 			}
 		}
 		
+		public partial class Menu
+		{
+			
+			// aapt resource value: 0x7f0e0000
+			public const int top_menus = 2131623936;
+			
+			static Menu()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Menu()
+			{
+			}
+		}
+		
 		public partial class Mipmap
 		{
 			
 			// aapt resource value: 0x7f030000
-			public const int ic_launcher = 2130903040;
+			public const int add = 2130903040;
 			
 			// aapt resource value: 0x7f030001
-			public const int ic_launcher_foreground = 2130903041;
+			public const int delete = 2130903041;
 			
 			// aapt resource value: 0x7f030002
-			public const int ic_launcher_round = 2130903042;
+			public const int ic_launcher = 2130903042;
+			
+			// aapt resource value: 0x7f030003
+			public const int ic_launcher_foreground = 2130903043;
+			
+			// aapt resource value: 0x7f030004
+			public const int ic_launcher_round = 2130903044;
 			
 			static Mipmap()
 			{
@@ -3795,6 +3820,9 @@ namespace Notepad
 			
 			// aapt resource value: 0x7f0a0161
 			public const int Base_Widget_Design_TabLayout = 2131362145;
+			
+			// aapt resource value: 0x7f0a0181
+			public const int MyTheme = 2131362177;
 			
 			// aapt resource value: 0x7f0a001e
 			public const int Platform_AppCompat = 2131361822;
