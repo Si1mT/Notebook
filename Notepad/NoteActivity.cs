@@ -29,6 +29,10 @@ namespace Notepad
             databaseService = new DatabaseService();
             databaseService.CreateDatabase();
 
+            Toolbar toolbar = FindViewById<Toolbar>(Resource.Id.toolbar1);
+            SetActionBar(toolbar);
+            ActionBar.Title = "Notes";
+
             var content = FindViewById<TextView>(Resource.Id.textView_content);
             var buttonDelete = FindViewById<Button>(Resource.Id.button_delete);
             var buttonSave = FindViewById<Button>(Resource.Id.button_save);
@@ -52,6 +56,21 @@ namespace Notepad
         {
             databaseService.DeleteNote(note);
             Finish();
+        }
+
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            MenuInflater.Inflate(Resource.Menu.note_menus, menu);
+            return base.OnCreateOptionsMenu(menu);
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            //if (item.)
+            //{
+
+            //}
+            return base.OnOptionsItemSelected(item);
         }
     }
 }

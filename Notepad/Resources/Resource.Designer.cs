@@ -2489,6 +2489,9 @@ namespace Notepad
 			// aapt resource value: 0x7f080060
 			public const int default_activity_button = 2131230816;
 			
+			// aapt resource value: 0x7f0800b7
+			public const int delete = 2131230903;
+			
 			// aapt resource value: 0x7f080090
 			public const int design_bottom_sheet = 2131230864;
 			
@@ -2668,6 +2671,9 @@ namespace Notepad
 			
 			// aapt resource value: 0x7f0800aa
 			public const int right_side = 2131230890;
+			
+			// aapt resource value: 0x7f0800b6
+			public const int save = 2131230902;
 			
 			// aapt resource value: 0x7f08000c
 			public const int save_image_matrix = 2131230732;
@@ -3132,7 +3138,10 @@ namespace Notepad
 		{
 			
 			// aapt resource value: 0x7f0e0000
-			public const int top_menus = 2131623936;
+			public const int note_menus = 2131623936;
+			
+			// aapt resource value: 0x7f0e0001
+			public const int top_menus = 2131623937;
 			
 			static Menu()
 			{
@@ -3161,6 +3170,9 @@ namespace Notepad
 			
 			// aapt resource value: 0x7f030004
 			public const int ic_launcher_round = 2130903044;
+			
+			// aapt resource value: 0x7f030005
+			public const int save = 2130903045;
 			
 			static Mipmap()
 			{
