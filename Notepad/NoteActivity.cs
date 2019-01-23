@@ -33,29 +33,9 @@ namespace Notepad
             SetActionBar(toolbar);
             ActionBar.Title = "Notes";
 
-            var content = FindViewById<TextView>(Resource.Id.textView_content);
-            var buttonDelete = FindViewById<Button>(Resource.Id.button_delete);
-            var buttonSave = FindViewById<Button>(Resource.Id.button_save);
+            var newContent = FindViewById<EditText>(Resource.Id.textInputEditText_content);
 
-            content.Text = note.Content;
-
-            buttonDelete.Click += Delete_Click;
-            buttonSave.Click += Save_Click;
-        }
-
-        private void Save_Click(object sender, EventArgs e)
-        {
-            var content = FindViewById<TextView>(Resource.Id.textInputEditText_content);
-
-            note.Content = content.Text;
-            databaseService.SaveNote(note);
-            Finish();
-        }
-
-        private void Delete_Click(object sender, EventArgs e)
-        {
-            databaseService.DeleteNote(note);
-            Finish();
+            newContent.Text = note.Content;
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
@@ -66,10 +46,20 @@ namespace Notepad
 
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
-            //if (item.)
-            //{
-
-            //}
+            switch (item.TitleFormatted.ToString())
+            {
+                case "save":
+                    var content = FindViewById<TextView>(Resource.Id.textInputEditText_content);
+                    note.Content = content.Text;
+                    databaseService.SaveNote(note);
+                    Finish();
+                    break;
+                case "delete":
+                    databaseService.DeleteNote(note);
+                    Finish();
+                    break;
+            }
+               
             return base.OnOptionsItemSelected(item);
         }
     }
