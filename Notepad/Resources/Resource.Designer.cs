@@ -2543,6 +2543,9 @@ namespace Notepad
 			// aapt resource value: 0x7f080058
 			public const int forever = 2131230808;
 			
+			// aapt resource value: 0x7f08009a
+			public const int fragment_Notes = 2131230874;
+			
 			// aapt resource value: 0x7f08000a
 			public const int ghost_view = 2131230730;
 			
@@ -2587,9 +2590,6 @@ namespace Notepad
 			
 			// aapt resource value: 0x7f08001d
 			public const int listMode = 2131230749;
-			
-			// aapt resource value: 0x7f08009a
-			public const int listView1 = 2131230874;
 			
 			// aapt resource value: 0x7f080061
 			public const int list_item = 2131230817;

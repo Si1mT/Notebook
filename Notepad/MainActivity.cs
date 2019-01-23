@@ -22,22 +22,22 @@ namespace Notepad
             SetActionBar(toolbar);
             ActionBar.Title = "Notes";
 
-            var NotesListView = FindViewById<ListView>(Resource.Id.listView1);
+            //var NotesListView = FindViewById<ListView>(Resource.Id.listView1);
 
-            databaseService = new DatabaseService();
-            databaseService.CreateDatabase();
-            List<Note> notes = databaseService.GetAllNotes();
+            //databaseService = new DatabaseService();
+            //databaseService.CreateDatabase();
+            //List<Note> notes = databaseService.GetAllNotes();
         }
 
-        protected override void OnStart()
-        {
-            base.OnStart();
+        //protected override void OnStart()
+        //{
+        //    base.OnStart();
 
-            List<Note> notes = databaseService.GetAllNotes();
+        //    List<Note> notes = databaseService.GetAllNotes();
 
-            var notesListView = FindViewById<ListView>(Resource.Id.listView1);
-            notesListView.Adapter = new NoteAdapter(this, notes, databaseService);
-        }
+        //    var notesListView = FindViewById<ListView>(Resource.Id.listView1);
+        //    notesListView.Adapter = new NoteAdapter(this, notes, databaseService);
+        //}
 
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
@@ -51,10 +51,10 @@ namespace Notepad
             note.Content = "new note";
             databaseService.AddNote(note);
 
-            List<Note> notes = databaseService.GetAllNotes();
+            //List<Note> notes = databaseService.GetAllNotes();
 
-            var listView = FindViewById<ListView>(Resource.Id.listView1);
-            listView.Adapter = new NoteAdapter(this, notes, databaseService);
+            //var listView = FindViewById<ListView>(Resource.Id.listView1);
+            //listView.Adapter = new NoteAdapter(this, notes, databaseService);
             return base.OnOptionsItemSelected(item);
         }
     }

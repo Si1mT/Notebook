@@ -22,6 +22,14 @@ namespace Notepad
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+            ////////////////////////////////////////////////////////////////////////////////////////////
+            var noteId = Intent.Extras.GetInt("current_note_id", 0);
+
+            var detailsFrag = NoteFragment.NewInstance(noteId);
+            FragmentManager.BeginTransaction()
+                            .Add(Android.Resource.Id.Content, detailsFrag)
+                            .Commit();
+            ////////////////////////////////////////////////////////////////////////////////////////////
 
             SetContentView(Resource.Layout.note_layout);
 
