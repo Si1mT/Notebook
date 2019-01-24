@@ -17,7 +17,7 @@ namespace Notepad
     public class NoteActivity : Activity
     {
         DatabaseService databaseService;
-        Note note;
+        Note note = new Note();
 
         protected override void OnCreate(Bundle savedInstanceState)
         {

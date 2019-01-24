@@ -11,7 +11,7 @@ namespace Notepad
     [Activity(Label = "@string/app_name", Theme = "@style/MyTheme", MainLauncher = true)]
     public class MainActivity : Activity
     {
-        DatabaseService databaseService;
+        DatabaseService databaseService=new DatabaseService();
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -50,6 +50,8 @@ namespace Notepad
             Note note = new Note();
             note.Content = "new note";
             databaseService.AddNote(note);
+
+            
 
             //List<Note> notes = databaseService.GetAllNotes();
 

@@ -15,7 +15,7 @@ namespace Notepad
 {
     public class NotesListFragment : ListFragment
     {
-        //DatabaseService databaseService;
+        DatabaseService databaseService;
         int selectedNoteId;
 
         public NotesListFragment()
@@ -25,17 +25,17 @@ namespace Notepad
 
         public override void OnActivityCreated(Bundle savedInstanceState)
         {
-            //databaseService = new DatabaseService();
-            //databaseService.CreateDatabase();
-            //List<Note> notes = databaseService.GetAllNotes();
-            //List<string> notesList = new List<string>();
-            //foreach (var note in notes)
-            //{
-            //    notesList.Add(note.Content);
-            //}
+            databaseService = new DatabaseService();
+            databaseService.CreateDatabase();
+            List<Note> notes = databaseService.GetAllNotes();
+            List<string> notesList = new List<string>();
+            foreach (var note in notes)
+            {
+                notesList.Add(note.Content);
+            }
 
             base.OnActivityCreated(savedInstanceState);
-            ListAdapter = new ArrayAdapter<String>(Activity, Android.Resource.Layout.SimpleListItemActivated1, Note.notesArray);
+            ListAdapter = new ArrayAdapter<String>(Activity, Android.Resource.Layout.SimpleListItemActivated1, notesList);
 
             if (savedInstanceState != null)
             {

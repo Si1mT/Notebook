@@ -15,6 +15,7 @@ namespace Notepad
 {
     public class NoteFragment : Fragment
     {
+        DatabaseService DatabaseService;
         public int NoteId => Arguments.GetInt("current_note_id", 0);
 
         public static NoteFragment NewInstance(int noteId)
@@ -36,7 +37,7 @@ namespace Notepad
             var padding = Convert.ToInt32(TypedValue.ApplyDimension(ComplexUnitType.Dip, 4, Activity.Resources.DisplayMetrics));
             editText.SetPadding(padding, padding, padding, padding);
             editText.TextSize = 24;
-            editText.Text = Note.notesArray[NoteId];
+            editText.Text = DatabaseService.GetAllNotes().ElementAt(Id).Content[NoteId].ToString();
 
             var scroller = new ScrollView(Activity);
             scroller.AddView(editText);
