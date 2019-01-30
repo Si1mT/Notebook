@@ -60,7 +60,6 @@
     <Compile Include="MainActivity.cs" />
     <Compile Include="Note.cs" />
     <Compile Include="NoteActivity.cs" />
-    <Compile Include="NoteAdapter.cs" />
     <Compile Include="NoteFragment.cs" />
     <Compile Include="NotesListFragment.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
@@ -104,11 +103,6 @@
     <PackageReference Include="Xamarin.Android.Support.Design" Version="27.0.2.1" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\note_layout.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\layout\main_activity.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
@@ -136,6 +130,11 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\mipmap-xxxhdpi\save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\note_activity.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

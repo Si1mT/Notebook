@@ -17,6 +17,7 @@ namespace Notepad
     {
         DatabaseService databaseService;
         int selectedNoteId;
+        bool showingTwoFragments;
 
         public NotesListFragment()
         {
@@ -41,6 +42,15 @@ namespace Notepad
             {
                 selectedNoteId = savedInstanceState.GetInt("current_note_id", 0);
             }
+
+            var noteContainer = Activity.FindViewById(Resource.Id.notes_container);
+            showingTwoFragments = noteContainer != null &&
+                                  noteContainer.Visibility == ViewStates.Visible;
+            if (showingTwoFragments)
+            {
+                ListView.ChoiceMode = ChoiceMode.Single;
+                ShowNote(selectedNoteId);
+            }
         }
 
         public override void OnSaveInstanceState(Bundle outState)
@@ -54,11 +64,32 @@ namespace Notepad
             ShowNote(position);
         }
 
-        void ShowNote(int playId)
+        void ShowNote(int noteId)
         {
-            var intent = new Intent(Activity, typeof(NoteActivity));
-            intent.PutExtra("current_note_id", playId);
-            StartActivity(intent);
+            selectedNoteId = noteId;
+            if (showingTwoFragments)
+            {
+                ListView.SetItemChecked(selectedNoteId, true);
+
+                NoteFragment noteFragment = FragmentManager.FindFragmentById(Resource.Id.notes_container) as NoteFragment;
+
+                if (noteFragment == null || noteFragment.NoteId != noteId)
+                {
+                    var container = Activity.FindViewById(Resource.Id.notes_container);
+                    var quoteFrag = NoteFragment.NewInstance(selectedNoteId);
+
+                    FragmentTransaction ft = FragmentManager.BeginTransaction();
+                    ft.Replace(Resource.Id.notes_container, quoteFrag);
+                    ft.Commit();
+                }
+            }
+            else
+            {
+                var intent = new Intent(Activity, typeof(NoteActivity));
+                intent.PutExtra("current_play_id", noteId);
+                StartActivity(intent);
+
+            }
         }
     }
 }

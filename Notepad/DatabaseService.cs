@@ -17,21 +17,29 @@ namespace Notepad
     class DatabaseService
     {
         SQLiteConnection db;
+        public static List<Note> NotesList { get; set; }
 
+        public DatabaseService()
+        {
+            CreateDatabase();
+            NotesList = GetAllNotes().ToList();
+        }
         public void CreateDatabase()
         {
             string dbPath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "db.db3");
             db = new SQLiteConnection(dbPath);
             db.CreateTable<Note>();
 
-            var table = db.Table<Note>();
-            Note patientZero = new Note()
+
+            db.CreateTable<Note>();
+            if (db.Table<Note>().Count() == 0)
             {
-                Content = "ebola"
-            };
-            if (!table.Contains(patientZero))
-                db.Insert(patientZero);
-            db.Delete(patientZero);
+                Note testNote = new Note()
+                {
+                    Content = "new note"
+                };
+                db.Insert(testNote);
+            }
         }
 
         public void AddNote(Note note)

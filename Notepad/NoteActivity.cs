@@ -22,28 +22,36 @@ namespace Notepad
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+
+            if (Resources.Configuration.Orientation == Android.Content.Res.Orientation.Landscape)
+            {
+                Finish();
+            }
+            SetContentView(Resource.Layout.note_activity);
             ////////////////////////////////////////////////////////////////////////////////////////////
             var noteId = Intent.Extras.GetInt("current_note_id", 0);
 
-            var detailsFrag = NoteFragment.NewInstance(noteId);
-            FragmentManager.BeginTransaction()
-                            .Add(Android.Resource.Id.Content, detailsFrag)
-                            .Commit();
+            //var detailsFrag = NoteFragment.NewInstance(noteId);
+            //FragmentManager.BeginTransaction()
+            //                .Add(Android.Resource.Id.Content, detailsFrag)
+            //                .Commit();
             ////////////////////////////////////////////////////////////////////////////////////////////
 
-            SetContentView(Resource.Layout.note_layout);
+            //SetContentView(Resource.Layout.note_layout);
 
-            note = JsonConvert.DeserializeObject<Note>(Intent.GetStringExtra("note"));
-            databaseService = new DatabaseService();
-            databaseService.CreateDatabase();
+            var textView = FindViewById<TextView>(Resource.Id.textView1);
+            textView.Text = DatabaseService.NotesList[noteId].Content;
+            //note = JsonConvert.DeserializeObject<Note>(Intent.GetStringExtra("note"));
+            //databaseService = new DatabaseService();
+            //databaseService.CreateDatabase();
 
             Toolbar toolbar = FindViewById<Toolbar>(Resource.Id.toolbar1);
             SetActionBar(toolbar);
             ActionBar.Title = "Notes";
 
-            var newContent = FindViewById<EditText>(Resource.Id.textInputEditText_content);
+            //var newContent = FindViewById<EditText>(Resource.Id.textInputEditText_content);
 
-            newContent.Text = note.Content;
+            //newContent.Text = note.Content;
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
@@ -57,8 +65,6 @@ namespace Notepad
             switch (item.TitleFormatted.ToString())
             {
                 case "save":
-                    var content = FindViewById<TextView>(Resource.Id.textInputEditText_content);
-                    note.Content = content.Text;
                     databaseService.SaveNote(note);
                     Finish();
                     break;

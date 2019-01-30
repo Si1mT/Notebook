@@ -33,14 +33,14 @@ namespace Notepad
                 return null;
             }
 
-            var editText = new EditText(Activity);
+            //var editText = new EditText(Activity);
             var padding = Convert.ToInt32(TypedValue.ApplyDimension(ComplexUnitType.Dip, 4, Activity.Resources.DisplayMetrics));
-            editText.SetPadding(padding, padding, padding, padding);
-            editText.TextSize = 24;
-            editText.Text = DatabaseService.GetAllNotes().ElementAt(Id).Content[NoteId].ToString();
+            //editText.SetPadding(padding, padding, padding, padding);
+            //editText.TextSize = 24;
+            //editText.Text = DatabaseService.GetAllNotes().ElementAt(Id).Content[NoteId].ToString();
 
             var scroller = new ScrollView(Activity);
-            scroller.AddView(editText);
+            //scroller.AddView(editText);
 
             return scroller;
         }

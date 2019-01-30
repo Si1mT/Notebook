@@ -21,23 +21,7 @@ namespace Notepad
             Toolbar toolbar = FindViewById<Toolbar>(Resource.Id.toolbar1);
             SetActionBar(toolbar);
             ActionBar.Title = "Notes";
-
-            //var NotesListView = FindViewById<ListView>(Resource.Id.listView1);
-
-            //databaseService = new DatabaseService();
-            //databaseService.CreateDatabase();
-            //List<Note> notes = databaseService.GetAllNotes();
         }
-
-        //protected override void OnStart()
-        //{
-        //    base.OnStart();
-
-        //    List<Note> notes = databaseService.GetAllNotes();
-
-        //    var notesListView = FindViewById<ListView>(Resource.Id.listView1);
-        //    notesListView.Adapter = new NoteAdapter(this, notes, databaseService);
-        //}
 
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
@@ -51,12 +35,8 @@ namespace Notepad
             note.Content = "new note";
             databaseService.AddNote(note);
 
-            
+            this.Recreate();
 
-            //List<Note> notes = databaseService.GetAllNotes();
-
-            //var listView = FindViewById<ListView>(Resource.Id.listView1);
-            //listView.Adapter = new NoteAdapter(this, notes, databaseService);
             return base.OnOptionsItemSelected(item);
         }
     }
