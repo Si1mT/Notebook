@@ -5,6 +5,10 @@ using Android.Runtime;
 using Android.Widget;
 using System.Collections.Generic;
 using Android.Views;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
+using Microsoft.AppCenter.Distribute;
 
 namespace Notepad
 {
@@ -17,6 +21,8 @@ namespace Notepad
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.main_activity);
+
+            AppCenter.Start("3866317d-4cee-4f6e-ad03-a5e364eb47d9", typeof(Analytics), typeof(Crashes),typeof(Distribute));
 
             Toolbar toolbar = FindViewById<Toolbar>(Resource.Id.toolbar1);
             SetActionBar(toolbar);
