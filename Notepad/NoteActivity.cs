@@ -16,8 +16,6 @@ namespace Notepad
     [Activity(Label = "NoteActivity")]
     public class NoteActivity : Activity
     {
-        DatabaseService databaseService;
-
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -30,8 +28,8 @@ namespace Notepad
 
             var noteId = Intent.Extras.GetInt("current_note_id", 0);
 
-            var textView = FindViewById<TextView>(Resource.Id.textView1);
-            textView.Text = DatabaseService.NotesList[noteId].Content;
+            var editText = FindViewById<EditText>(Resource.Id.textInputEditText1);
+            editText.Text = DatabaseService.NotesList[noteId].Content;
 
             Toolbar toolbar = FindViewById<Toolbar>(Resource.Id.toolbar1);
             SetActionBar(toolbar);
@@ -62,7 +60,6 @@ namespace Notepad
                 case "delete":
                     db.DeleteNote(note);
                     Finish();
-                    Recreate();
                     break;
             }
                

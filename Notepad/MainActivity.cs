@@ -45,5 +45,12 @@ namespace Notepad
 
             return base.OnOptionsItemSelected(item);
         }
+
+        protected override void OnRestart()
+        {
+            base.OnRestart();
+
+
+        }
     }
 }

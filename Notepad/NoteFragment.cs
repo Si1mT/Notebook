@@ -26,23 +26,23 @@ namespace Notepad
         }
 
 
-        public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-        {
-            if (container == null)
-            {
-                return null;
-            }
+        //public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+        //{
+        //    if (container == null)
+        //    {
+        //        return null;
+        //    }
 
-            //var editText = new EditText(Activity);
-            var padding = Convert.ToInt32(TypedValue.ApplyDimension(ComplexUnitType.Dip, 4, Activity.Resources.DisplayMetrics));
-            //editText.SetPadding(padding, padding, padding, padding);
-            //editText.TextSize = 24;
-            //editText.Text = DatabaseService.GetAllNotes().ElementAt(Id).Content[NoteId].ToString();
+        //    //var editText = new EditText(Activity);
+        //    //var padding = Convert.ToInt32(TypedValue.ApplyDimension(ComplexUnitType.Dip, 4, Activity.Resources.DisplayMetrics));
+        //    //editText.SetPadding(padding, padding, padding, padding);
+        //    //editText.TextSize = 24;
+        //    //editText.Text = DatabaseService.GetAllNotes().ElementAt(Id).Content[NoteId].ToString();
 
-            var scroller = new ScrollView(Activity);
-            //scroller.AddView(editText);
+        //    var scroller = new ScrollView(Activity);
+        //    //scroller.AddView(editText);
 
-            return scroller;
-        }
+        //    return scroller;
+        //}
     }
 }

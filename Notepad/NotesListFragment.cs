@@ -15,7 +15,6 @@ namespace Notepad
 {
     public class NotesListFragment : ListFragment
     {
-        DatabaseService databaseService;
         int selectedNoteId;
         bool showingTwoFragments;
 
@@ -26,7 +25,7 @@ namespace Notepad
 
         public override void OnActivityCreated(Bundle savedInstanceState)
         {
-            databaseService = new DatabaseService();
+            DatabaseService databaseService = new DatabaseService();
             databaseService.CreateDatabase();
             List<Note> notes = databaseService.GetAllNotes();
             List<string> notesList = new List<string>();
@@ -36,6 +35,7 @@ namespace Notepad
             }
 
             base.OnActivityCreated(savedInstanceState);
+
             ListAdapter = new ArrayAdapter<String>(Activity, Android.Resource.Layout.SimpleListItemActivated1, notesList);
 
             if (savedInstanceState != null)
@@ -43,6 +43,33 @@ namespace Notepad
                 selectedNoteId = savedInstanceState.GetInt("current_note_id", 0);
             }
 
+            var noteContainer = Activity.FindViewById(Resource.Id.notes_container);
+            showingTwoFragments = noteContainer != null &&
+                                  noteContainer.Visibility == ViewStates.Visible;
+            if (showingTwoFragments)
+            {
+                ListView.ChoiceMode = ChoiceMode.Single;
+                ShowNote(selectedNoteId);
+            }
+        }
+
+        public override void OnResume()
+        {
+            DatabaseService databaseService = new DatabaseService();
+            databaseService.CreateDatabase();
+            List<Note> notes = databaseService.GetAllNotes();
+            List<string> notesList = new List<string>();
+            foreach (var note in notes)
+            {
+                notesList.Add(note.Content);
+            }
+
+            base.OnResume();
+
+            ListAdapter = new ArrayAdapter<String>(Activity, Android.Resource.Layout.SimpleListItemActivated1, notesList);
+
+            //might help with viewing notes in landscape mode somehow
+            //reasoning: selected note on the left in landscape mode is highlighted with this code 
             var noteContainer = Activity.FindViewById(Resource.Id.notes_container);
             showingTwoFragments = noteContainer != null &&
                                   noteContainer.Visibility == ViewStates.Visible;
