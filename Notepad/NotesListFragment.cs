@@ -88,7 +88,6 @@ namespace Notepad
                 var intent = new Intent(Activity, typeof(NoteActivity));
                 intent.PutExtra("current_play_id", noteId);
                 StartActivity(intent);
-
             }
         }
     }
