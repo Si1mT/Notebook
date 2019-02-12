@@ -7,9 +7,9 @@
 	<include
 		android:id="@+id/toolbar1"
 		layout="@layout/toolbar"/>
-	<android.support.design.widget.TextInputEditText
+	<EditText
 		android:layout_width="match_parent"
-		android:layout_height="100dp"
+		android:layout_height="50.5dp"
 		android:id="@+id/textInputEditText1" />
 
 

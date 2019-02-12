@@ -16,6 +16,8 @@ namespace Notepad
     [Activity(Label = "NoteActivity")]
     public class NoteActivity : Activity
     {
+        EditText editText;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -28,12 +30,13 @@ namespace Notepad
 
             var noteId = Intent.Extras.GetInt("current_note_id", 0);
 
-            var editText = FindViewById<EditText>(Resource.Id.textInputEditText1);
+            editText = FindViewById<EditText>(Resource.Id.textInputEditText1);
             editText.Text = DatabaseService.NotesList[noteId].Content;
 
             Toolbar toolbar = FindViewById<Toolbar>(Resource.Id.toolbar1);
             SetActionBar(toolbar);
             ActionBar.Title = "Notes";
+            
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
@@ -50,6 +53,7 @@ namespace Notepad
             db.CreateDatabase();
 
             note=DatabaseService.NotesList[noteId];
+            note.Content = editText.Text;
 
             switch (item.TitleFormatted.ToString())
             {

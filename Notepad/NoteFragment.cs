@@ -15,8 +15,10 @@ namespace Notepad
 {
     public class NoteFragment : Fragment
     {
-        DatabaseService DatabaseService;
+        DatabaseService DatabaseService=new DatabaseService();
         public int NoteId => Arguments.GetInt("current_note_id", 0);
+        public static EditText editText { get; set; }
+        public static int StatNoteId { get; set; }
 
         public static NoteFragment NewInstance(int noteId)
         {
@@ -26,23 +28,29 @@ namespace Notepad
         }
 
 
-        //public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-        //{
-        //    if (container == null)
-        //    {
-        //        return null;
-        //    }
+        public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+        {
+            if (container == null)
+            {
+                return null;
+            }
 
-        //    //var editText = new EditText(Activity);
-        //    //var padding = Convert.ToInt32(TypedValue.ApplyDimension(ComplexUnitType.Dip, 4, Activity.Resources.DisplayMetrics));
-        //    //editText.SetPadding(padding, padding, padding, padding);
-        //    //editText.TextSize = 24;
-        //    //editText.Text = DatabaseService.GetAllNotes().ElementAt(Id).Content[NoteId].ToString();
+            var notes = DatabaseService.GetAllNotes();
 
-        //    var scroller = new ScrollView(Activity);
-        //    //scroller.AddView(editText);
+            List<string> notesList = DatabaseService.NotesList.Select(x => x.Content).ToList();
 
-        //    return scroller;
-        //}
+            var editText2 = Activity.FindViewById<EditText>(Resource.Id.textInputEditText1);
+            editText = editText2;
+            try
+            {
+                editText.Text = notesList[NoteId];
+            }
+            catch (Exception)
+            {
+                editText.Text = notesList[0];
+            }
+
+            return null;
+        }
     }
 }
