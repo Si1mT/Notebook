@@ -40,11 +40,9 @@ namespace Notepad
 
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
-            Note note = new Note()
-            {
-                Id = DatabaseService.NotesList[NoteFragment.StatNoteId].Id,
-                Content = NoteFragment.editText.Text
-            };
+            Note note = new Note();
+            note.Id = DatabaseService.NotesList[NoteFragment.StatNoteId].Id;
+            note.Content = NoteFragment.editText.Text;
             DatabaseService db = new DatabaseService();
 
             switch (item.TitleFormatted.ToString())
