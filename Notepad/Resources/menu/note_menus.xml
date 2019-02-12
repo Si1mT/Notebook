@@ -1,6 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+  <item android:id="@+id/add"
+      android:icon="@mipmap/add"
+      android:showAsAction="ifRoom"
+      android:title="add"/>
+
   <item android:id="@+id/save"
         android:icon="@mipmap/save"
         android:showAsAction="ifRoom"

@@ -16,8 +16,7 @@ namespace Notepad
     [Activity(Label = "NoteActivity")]
     public class NoteActivity : Activity
     {
-        DatabaseService databaseService;
-        Note note = new Note();
+        EditText editText;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -28,30 +27,16 @@ namespace Notepad
                 Finish();
             }
             SetContentView(Resource.Layout.note_activity);
-            ////////////////////////////////////////////////////////////////////////////////////////////
+
             var noteId = Intent.Extras.GetInt("current_note_id", 0);
 
-            //var detailsFrag = NoteFragment.NewInstance(noteId);
-            //FragmentManager.BeginTransaction()
-            //                .Add(Android.Resource.Id.Content, detailsFrag)
-            //                .Commit();
-            ////////////////////////////////////////////////////////////////////////////////////////////
-
-            //SetContentView(Resource.Layout.note_layout);
-
-            var textView = FindViewById<TextView>(Resource.Id.textView1);
-            textView.Text = DatabaseService.NotesList[noteId].Content;
-            //note = JsonConvert.DeserializeObject<Note>(Intent.GetStringExtra("note"));
-            //databaseService = new DatabaseService();
-            //databaseService.CreateDatabase();
+            editText = FindViewById<EditText>(Resource.Id.textInputEditText1);
+            editText.Text = DatabaseService.NotesList[noteId].Content;
 
             Toolbar toolbar = FindViewById<Toolbar>(Resource.Id.toolbar1);
             SetActionBar(toolbar);
             ActionBar.Title = "Notes";
-
-            //var newContent = FindViewById<EditText>(Resource.Id.textInputEditText_content);
-
-            //newContent.Text = note.Content;
+            
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
@@ -62,14 +47,22 @@ namespace Notepad
 
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
+            var noteId = Intent.Extras.GetInt("current_note_id", 0);
+            Note note = new Note();
+            DatabaseService db = new DatabaseService();
+            db.CreateDatabase();
+
+            note=DatabaseService.NotesList[noteId];
+            note.Content = editText.Text;
+
             switch (item.TitleFormatted.ToString())
             {
                 case "save":
-                    databaseService.SaveNote(note);
+                    db.SaveNote(note);
                     Finish();
                     break;
                 case "delete":
-                    databaseService.DeleteNote(note);
+                    db.DeleteNote(note);
                     Finish();
                     break;
             }
