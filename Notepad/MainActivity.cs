@@ -41,8 +41,7 @@ namespace Notepad
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
             Note note = new Note();
-            note.Id = DatabaseService.NotesList[NoteFragment.StatNoteId].Id;
-            note.Content = NoteFragment.editText.Text;
+            
             DatabaseService db = new DatabaseService();
 
             switch (item.TitleFormatted.ToString())
@@ -53,6 +52,8 @@ namespace Notepad
                     db.AddNote(newNote);
                     break;
                 case "save":
+                    note.Id = DatabaseService.NotesList[NoteFragment.StatNoteId].Id;
+                    note.Content = NoteFragment.editText.Text;
                     db.SaveNote(note);
                     break;
                 case "delete":
