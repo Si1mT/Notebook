@@ -34,7 +34,12 @@ namespace Notepad
 
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
-            MenuInflater.Inflate(Resource.Menu.note_menus, menu);
+            if (Resources.Configuration.Orientation == Android.Content.Res.Orientation.Landscape)
+            {
+                MenuInflater.Inflate(Resource.Menu.note_menus, menu);
+                return base.OnCreateOptionsMenu(menu);
+            }
+            MenuInflater.Inflate(Resource.Menu.top_menus, menu);
             return base.OnCreateOptionsMenu(menu);
         }
 
