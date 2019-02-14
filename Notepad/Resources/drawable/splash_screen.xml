@@ -2,9 +2,12 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
   <item>
-    <bitmap
-        android:src="@drawable/app_icon"
-        android:tileMode="disabled"
-        android:gravity="center"/>
+    <shape android:shape="rectangle">
+      <solid android:color="@android:color/white" />
+    </shape>
+  </item>
+
+  <item>
+    <bitmap android:gravity="center" android:src="@drawable/app_icon" />
   </item>
 </layer-list>
