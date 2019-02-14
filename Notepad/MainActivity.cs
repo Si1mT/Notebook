@@ -52,12 +52,29 @@ namespace Notepad
                     db.AddNote(newNote);
                     break;
                 case "save":
-                    note.Id = DatabaseService.NotesList[NoteFragment.StatNoteId].Id;
-                    note.Content = NoteFragment.editText.Text;
-                    db.SaveNote(note);
+                    if(NoteFragment.editText==null)
+                    {
+                        break;
+                    }
+                    else if(NoteFragment.editText!=null)
+                    {
+                        note.Id = DatabaseService.NotesList[NoteFragment.StatNoteId].Id;
+                        note.Content = NoteFragment.editText.Text;
+                        db.SaveNote(note);
+                        break;
+                    }
                     break;
+                    
                 case "delete":
-                    db.DeleteNote(note);
+                    if (NoteFragment.editText == null)
+                    {
+                        break;
+                    }
+                    else if (NoteFragment.editText != null)
+                    {
+                        db.DeleteNote(note);
+                        break;
+                    }
                     break;
             }
 
